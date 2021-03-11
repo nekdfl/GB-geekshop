@@ -27,7 +27,7 @@ def products(request):
     return render(request, 'mainapp/products.html', content)
 
 
-def contact(request):
+def contacts(request):
     locations = []
     with open(os.path.join(settings.BASE_DIR, 'datasets/contacts.json')) as f:
         locations = json.load(f)
