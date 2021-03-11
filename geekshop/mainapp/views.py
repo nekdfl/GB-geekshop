@@ -1,5 +1,7 @@
 from django.shortcuts import render
-
+from django.conf import settings
+import os
+import json
 # Create your views here.
 
 
@@ -26,7 +28,12 @@ def products(request):
 
 
 def contact(request):
+    locations = []
+    with open(os.path.join(settings.BASE_DIR, 'datasets/contacts.json')) as f:
+        locations = json.load(f)
+
     content = {
-        'title': 'Контакты'
+        'title': 'Контакты',
+        'locations': locations
     }
     return render(request, 'mainapp/contact.html', content)
